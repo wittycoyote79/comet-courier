@@ -65,16 +65,16 @@ ui.showTitle(world.best);
 function update(dt) {
   if (screen === 'title') {
     world.updateAmbient(dt);
-    if (input.wasPressed('Enter')) startGame();
+    if (input.takePressed('Enter')) startGame();
     return;
   }
   if (screen === 'playing') {
-    if (input.wasPressed('Escape') || input.wasPressed('p')) {
+    if (input.takePressed('Escape') || input.takePressed('p')) {
       screen = 'paused';
       ui.showPause();
       return;
     }
-    if (input.wasPressed('m')) ui.setMuted(audio.toggleMute());
+    if (input.takePressed('m')) ui.setMuted(audio.toggleMute());
     world.update(dt, input);
     ui.syncBanner(world);
     if (world.outcome === 'won') endGame(true);
@@ -82,14 +82,14 @@ function update(dt) {
     return;
   }
   if (screen === 'paused') {
-    if (input.wasPressed('Escape') || input.wasPressed('p') || input.wasPressed('Enter')) {
+    if (input.takePressed('Escape') || input.takePressed('p') || input.takePressed('Enter')) {
       resumeGame();
     }
     return;
   }
   if (screen === 'over' || screen === 'victory') {
     particles.update(dt);
-    if (input.wasPressed('Enter')) startGame();
+    if (input.takePressed('Enter')) startGame();
   }
 }
 

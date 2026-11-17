@@ -84,6 +84,14 @@ export function createInput(canvas) {
     wasPressed(key) {
       return pressed.has(key);
     },
+    // Like wasPressed, but consumed: true only on the first step that asks
+    // in a frame, so a key never toggles a screen twice in one frame when
+    // the loop runs several fixed steps before the next paint.
+    takePressed(key) {
+      if (!pressed.has(key)) return false;
+      pressed.delete(key);
+      return true;
+    },
     // True while any of the given keys is held.
     held(...names) {
       return names.some((name) => keys.has(name));
