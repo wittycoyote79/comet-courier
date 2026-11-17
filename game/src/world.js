@@ -26,6 +26,7 @@ import {
   MAX_SHARDS,
   COLLECT_SCORE,
   DELIVER_SCORE,
+  DELIVER_COMBO_STEP,
   COMBO_WINDOW,
   COMBO_MAX,
   WAVE_TIME,
@@ -207,7 +208,10 @@ export function createWorld({ audio, particles }) {
     const matching = world.cargo.filter((kind) => kind === gate.kind);
     if (matching.length === 0) return;
     world.cargo = world.cargo.filter((kind) => kind !== gate.kind);
-    const points = DELIVER_SCORE * world.combo * matching.length;
+    // Each shard pays the base rate plus a combo step, so a long chain is
+    // worth more per shard without letting one delivery win the run.
+    const perShard = DELIVER_SCORE + (world.combo - 1) * DELIVER_COMBO_STEP;
+    const points = perShard * matching.length;
     world.score += points;
     world.deliveries += matching.length;
     world.combo = Math.min(COMBO_MAX, world.combo + 1);

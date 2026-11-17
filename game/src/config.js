@@ -20,7 +20,7 @@ export const DASH_KILL_SCORE = 15;
 export const START_LIVES = 3;
 export const MAX_LIVES = 5;
 export const HIT_INVULN_TIME = 1.6;
-export const TARGET_SCORE = 400;
+export const TARGET_SCORE = 600;
 
 export const CARGO_CAPACITY = 5;
 export const SHARD_RADIUS = 11;
@@ -28,6 +28,7 @@ export const SHARD_SPAWN_INTERVAL = 1.15;
 export const MAX_SHARDS = 14;
 export const COLLECT_SCORE = 2;
 export const DELIVER_SCORE = 10;
+export const DELIVER_COMBO_STEP = 5;
 export const COMBO_WINDOW = 4.0;
 export const COMBO_MAX = 5;
 
