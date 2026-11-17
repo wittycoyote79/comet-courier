@@ -24,7 +24,7 @@ export function createUi({ onStart, onResume, onRestart, onToggleMute }) {
   document.getElementById('again-button').addEventListener('click', onRestart);
   muteButton.addEventListener('click', () => {
     const muted = onToggleMute();
-    muteButton.textContent = muted ? '🔇 muted' : '🔊 sound';
+    muteButton.textContent = muted ? '♪ sound off' : '♪ sound on';
     muteButton.setAttribute('aria-pressed', String(muted));
   });
 
@@ -94,7 +94,7 @@ export function createUi({ onStart, onResume, onRestart, onToggleMute }) {
       }
     },
     setMuted(muted) {
-      muteButton.textContent = muted ? '🔇 muted' : '🔊 sound';
+      muteButton.textContent = muted ? '♪ sound off' : '♪ sound on';
       muteButton.setAttribute('aria-pressed', String(muted));
     },
   };

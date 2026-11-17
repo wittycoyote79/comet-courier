@@ -51,9 +51,9 @@ export const KINDS = [
 ];
 
 export const GATE_POSITIONS = [
-  { x: 170, y: 150, kind: 0 },
-  { x: WORLD_WIDTH - 170, y: 150, kind: 1 },
-  { x: WORLD_WIDTH / 2, y: 112, kind: 2 },
+  { x: 170, y: 175, kind: 0 },
+  { x: WORLD_WIDTH - 170, y: 175, kind: 1 },
+  { x: WORLD_WIDTH / 2, y: 175, kind: 2 },
 ];
 export const GATE_RADIUS = 52;
 

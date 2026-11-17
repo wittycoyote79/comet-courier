@@ -32,19 +32,8 @@ function shapePath(ctx, shape, x, y, radius, rotation) {
   ctx.beginPath();
   if (shape === 'circle') {
     ctx.arc(x, y, radius, 0, Math.PI * 2);
-  } else if (shape === 'square') {
-    ctx.save();
-    ctx.translate(x, y);
-    ctx.rotate(rotation);
-    ctx.rect(-radius * 0.85, -radius * 0.85, radius * 1.7, radius * 1.7);
-    ctx.restore();
-    ctx.beginPath();
-    ctx.save();
-    ctx.translate(x, y);
-    ctx.rotate(rotation);
-    ctx.rect(-radius * 0.85, -radius * 0.85, radius * 1.7, radius * 1.7);
-    ctx.restore();
   } else {
+    // Triangle: squares are drawn by drawShape's rotated-rect path instead.
     for (let i = 0; i < 3; i++) {
       const angle = rotation + (i / 3) * Math.PI * 2 - Math.PI / 2;
       const px = x + Math.cos(angle) * radius;
@@ -404,7 +393,10 @@ export function createRenderer(canvas) {
       const shake = particles.shakeOffset();
       ctx.translate(shake.x, shake.y);
       drawBackground(ctx, world.time);
+      // Behind the title the gates sit dimmer, so the title text stays crisp.
+      if (screen === 'title') ctx.globalAlpha = 0.5;
       for (const gate of world.gates) drawGate(ctx, gate, world.time);
+      ctx.globalAlpha = 1;
       for (const shard of world.shards) drawShard(ctx, shard);
       for (const powerup of world.powerups) drawPowerup(ctx, powerup);
       for (const wisp of world.wisps) drawWisp(ctx, wisp, world.time);
