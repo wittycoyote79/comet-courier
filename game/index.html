@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Comet Courier — deliver the starlight</title>
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<main id="stage">
+  <canvas id="game" width="1280" height="720" aria-label="Comet Courier game canvas"></canvas>
+
+  <div id="banner" aria-live="polite">
+    <div id="banner-title"></div>
+    <div id="banner-sub"></div>
+  </div>
+
+  <section id="title-screen" class="overlay visible" aria-label="Title screen">
+    <p class="eyebrow">A STARLIGHT DELIVERY RUN</p>
+    <h1>COMET<br>COURIER</h1>
+    <p class="tagline">Gather fallen star shards. Fly them home through the gate that matches their light. Mind the wisps.</p>
+    <div class="goal-card">
+      <span>GOAL</span>
+      <strong>Score 400 points to complete the route</strong>
+    </div>
+    <div class="controls-grid">
+      <div><kbd>MOUSE</kbd><span>steer the ship</span></div>
+      <div><kbd>W A S D</kbd><span>or arrow keys</span></div>
+      <div><kbd>SPACE</kbd><span>or click to dash</span></div>
+      <div><kbd>P</kbd><span>pause</span></div>
+      <div><kbd>M</kbd><span>mute</span></div>
+      <div><kbd>ENTER</kbd><span>start / restart</span></div>
+    </div>
+    <p class="hint">Dash through a wisp to burst it. Match shard shapes to gate shapes for combo deliveries.</p>
+    <button id="start-button" class="big-button" type="button">▶&nbsp; Start delivery</button>
+    <p id="best-line" class="best-line"></p>
+  </section>
+
+  <section id="pause-screen" class="overlay" aria-label="Paused">
+    <h2>PAUSED</h2>
+    <p class="tagline">The starlight waits. The wisps do not — they are frozen too, for once.</p>
+    <button id="resume-button" class="big-button" type="button">Resume flight</button>
+    <button id="pause-restart-button" class="ghost-button" type="button">Restart route</button>
+  </section>
+
+  <section id="end-screen" class="overlay" aria-label="Run results">
+    <h2 id="end-title"></h2>
+    <p id="end-subtitle" class="tagline"></p>
+    <div id="end-stats" class="stats"></div>
+    <button id="again-button" class="big-button" type="button">↻&nbsp; Fly again</button>
+    <p class="hint">or press ENTER</p>
+  </section>
+
+  <button id="mute-button" type="button" aria-pressed="false">🔊 sound</button>
+</main>
+<script type="module" src="src/main.js"></script>
+</body>
+</html>
